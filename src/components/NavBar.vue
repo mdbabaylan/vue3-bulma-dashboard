@@ -13,30 +13,33 @@
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu" ref="menu">
-            <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
-                </a>
+        <transition enter-active-class="animate__animated animate__fadeInDown"
+            leave-active-class="animate__animated animate__fadeOutUp">
+            <div v-if="menuVisible" id="navbarBasicExample" class="navbar-menu is-active" ref="menu">
+                <div class="navbar-start">
+                    <a class="navbar-item">
+                        Home
+                    </a>
 
-                <a class="navbar-item">
-                    Price Feed
-                </a>
+                    <a class="navbar-item">
+                        Price Feed
+                    </a>
 
-                <a class="navbar-item">
-                    Gymbrah Schedule
-                </a>
+                    <a class="navbar-item">
+                        Gymbrah Schedule
+                    </a>
 
-                <a class="navbar-item">
-                    Manga Updates
-                </a>
+                    <a class="navbar-item">
+                        Manga Updates
+                    </a>
 
-                <a class="navbar-item">
-                    カタカナ
-                </a>
+                    <a class="navbar-item">
+                        カタカナ
+                    </a>
+                </div>
+
             </div>
-
-        </div>
+        </transition>
     </nav>
 </template>
   
@@ -50,19 +53,20 @@ export default {
         // Create refs for DOM elements
         const burger = ref(null);
         const menu = ref(null);
+        const menuVisible = ref(false); // This will control the visibility of the menu
 
-        // Toggle navbar method
         const openHamburger = () => {
-            burger.value.classList.toggle('is-active');
-            menu.value.classList.toggle('is-active');
+            menuVisible.value = !menuVisible.value;
         };
+
 
         return {
             burger,
             menu,
+            menuVisible,
             openHamburger
         };
-    }
+    },
 }
 </script>
   
