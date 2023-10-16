@@ -13,33 +13,30 @@
             </a>
         </div>
 
-        <transition enter-active-class="animate__animated animate__fadeInDown"
-            leave-active-class="animate__animated animate__fadeOutUp">
-            <div v-if="menuVisible" id="navbarBasicExample" class="navbar-menu is-active" ref="menu">
-                <div class="navbar-start">
-                    <a class="navbar-item">
-                        Home
-                    </a>
+        <div id="navbarBasicExample" class="navbar-menu" ref="menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Home
+                </a>
 
-                    <a class="navbar-item">
-                        Price Feed
-                    </a>
+                <a class="navbar-item">
+                    Price Feed
+                </a>
 
-                    <a class="navbar-item">
-                        Gymbrah Schedule
-                    </a>
+                <a class="navbar-item">
+                    Gymbrah Schedule
+                </a>
 
-                    <a class="navbar-item">
-                        Manga Updates
-                    </a>
+                <a class="navbar-item">
+                    Manga Updates
+                </a>
 
-                    <a class="navbar-item">
-                        カタカナ
-                    </a>
-                </div>
-
+                <a class="navbar-item">
+                    カタカナ
+                </a>
             </div>
-        </transition>
+
+        </div>
     </nav>
 </template>
   
@@ -53,21 +50,24 @@ export default {
         // Create refs for DOM elements
         const burger = ref(null);
         const menu = ref(null);
-        const menuVisible = ref(false); // This will control the visibility of the menu
 
         const openHamburger = () => {
-            menuVisible.value = !menuVisible.value;
+            menu.value.classList.toggle('is-active');
         };
 
 
         return {
             burger,
             menu,
-            menuVisible,
             openHamburger
         };
     },
 }
 </script>
-  
+<style>
+.navbar,
+.navbar-menu {
+    background-color: #FFF2F1;
+}
+</style>  
   
